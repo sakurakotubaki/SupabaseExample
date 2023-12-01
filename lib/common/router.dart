@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_builder_ui/common/router_path.dart';
 import 'package:page_builder_ui/view/category.dart';
 import 'package:page_builder_ui/view/detail_page.dart';
+import 'package:page_builder_ui/view/parameter_test.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../domain/entity/category.dart';
@@ -25,6 +26,15 @@ GoRouter router(RouterRef ref) {
               builder: (context, state) {
                 final category = state.extra as CategoryModel;
                 return DetailPage(category);
+              },
+            ),
+            // パスパラメーターのテスト
+            GoRoute(
+              path: '${RouterPath.PATH_PARAM}/:id',
+              name: RouterPath.PATH_PARAM,
+              builder: (context, state) {
+                final id = state.pathParameters['id']!;
+                return ParameterTest(id: id);
               },
             ),
           ]

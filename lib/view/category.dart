@@ -21,7 +21,9 @@ class CategoryPage extends ConsumerWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   onTap: () {
-                    context.goNamed(RouterPath.DETAIL, extra: data[index]);
+                    // context.goNamed(RouterPath.DETAIL, extra: data[index]);
+                    context.goNamed(RouterPath.PATH_PARAM,
+                        pathParameters: {'id': data[index].id.toString()});
                   },
                   title: Text(data[index].name),
                 );
